@@ -1,0 +1,104 @@
+body {
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(135deg, #e0eff2, #36b4ea);
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  margin: 0;
+  overflow: auto;
+}
+
+.form-container {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  width: 80%;
+  max-width: 900px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+h2 {
+  grid-column: span 2;
+  text-align: center;
+  color: rgba(37, 99, 235, 0.9);
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+  color: rgba(37, 99, 235, 0.9);
+}
+
+input,
+select {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #b0bec5;
+  transition: border-color 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+input:focus,
+select:focus {
+  border-color: rgba(37, 99, 235, 0.9);
+  outline: none;
+}
+
+button {
+  grid-column: span 2;
+  background-color: rgba(37, 99, 235, 0.9);
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: rgba(37, 99, 235, 1);
+  transform: translateY(-2px);
+}
+
+.student-fields,
+.teacher-fields {
+  display: none;
+  grid-column: span 2;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+  grid-column: span 2;
+}
+
+.success-message {
+  color: green;
+  font-size: 16px;
+  text-align: center;
+  grid-column: span 2;
+}

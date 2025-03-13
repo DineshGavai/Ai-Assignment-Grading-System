@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | Engineering Learning Companion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/register.css'%}">
+</head>
+
+<body>
+    <form method="POST" action="{% url 'register' %}" class="form-container">
+        <h2>Create Account</h2>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="{{ message.tags }}-message">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-group">
+            <label for="college">College</label>
+            <input type="text" id="college" name="college" placeholder="Enter your college name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email ID</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email ID" required>
+        </div>
+        <div class="form-group">
+            <label for="mobile">Mobile Number</label>
+            <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password"
+                required>
+        </div>
+        <div class="form-group">
+            <label for="role">Select Role</label>
+            <select id="role" name="role" required onchange="toggleFields()">
+                <option value="" disabled selected>Select your role</option>
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+            </select>
+        </div>
+
+        <div id="studentFields" class="student-fields">
+            <!-- Student fields as in your original HTML -->
+            <div class="form-group">
+                <label for="branch">Branch</label>
+                <select id="branch" name="branch">
+                    <option value="" disabled selected>Select Branch</option>
+                    <option value="CSE">Computer Science Engineering</option>
+                    <!-- Add other options as in your original -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="year">Year of Study</label>
+                <select id="year" name="year">
+                    <option value="" disabled selected>Select Year</option>
+                    <option value="1st Year">1st Year</option>
+                    <!-- Add other options -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="semester">Semester</label>
+                <select id="semester" name="semester">
+                    <option value="" disabled selected>Select Semester</option>
+                    <option value="1">1</option>
+                    <!-- Add other options -->
+                </select>
+            </div>
+        </div>
+
+        <div id="teacherFields" class="teacher-fields">
+            <div class="form-group">
+                <label for="department">Department</label>
+                <select id="department" name="department">
+                    <option value="" disabled selected>Select Department</option>
+                    <option value="Computer Science Engineering">Computer Science Engineering</option>
+                    <!-- Add other options -->
+                </select>
+            </div>
+        </div>
+
+        <button type="submit">Create Account</button>
+    </form>
+
+    <script>
+        function toggleFields() {
+            const role = document.getElementById("role").value;
+            document.getElementById("studentFields").style.display = role === "student" ? "grid" : "none";
+            document.getElementById("teacherFields").style.display = role === "teacher" ? "grid" : "none";
+        }
+    </script>
+</body>
+
+</html>
