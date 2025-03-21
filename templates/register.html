@@ -54,29 +54,32 @@
         </div>
 
         <div id="studentFields" class="student-fields">
-            <!-- Student fields as in your original HTML -->
+
             <div class="form-group">
                 <label for="branch">Branch</label>
                 <select id="branch" name="branch">
                     <option value="" disabled selected>Select Branch</option>
-                    <option value="CSE">Computer Science Engineering</option>
-                    <!-- Add other options as in your original -->
+                    {% for branch in branches %}
+                    <option value="CSE">{{ branch }}</option>
+
+                    {% endfor %}
                 </select>
             </div>
             <div class="form-group">
                 <label for="year">Year of Study</label>
-                <select id="year" name="year">
+                <select id="year" name="year" onchange="updateSemesters()">
                     <option value="" disabled selected>Select Year</option>
                     <option value="1st Year">1st Year</option>
-                    <!-- Add other options -->
+                    <option value="2nd Year">2nd Year</option>
+                    <option value="3rd Year">3rd Year</option>
+                    <option value="4th Year">4th Year</option>
                 </select>
             </div>
+
             <div class="form-group">
                 <label for="semester">Semester</label>
                 <select id="semester" name="semester">
                     <option value="" disabled selected>Select Semester</option>
-                    <option value="1">1</option>
-                    <!-- Add other options -->
                 </select>
             </div>
         </div>
@@ -95,13 +98,7 @@
         <button type="submit">Create Account</button>
     </form>
 
-    <script>
-        function toggleFields() {
-            const role = document.getElementById("role").value;
-            document.getElementById("studentFields").style.display = role === "student" ? "grid" : "none";
-            document.getElementById("teacherFields").style.display = role === "teacher" ? "grid" : "none";
-        }
-    </script>
+    <script src="{% static 'js/register.js' %}"></script>
 </body>
 
 </html>

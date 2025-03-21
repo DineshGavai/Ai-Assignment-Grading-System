@@ -1,5 +1,6 @@
 from django import forms
-from .models import Assignment
+from .models import Assignment,Submission
+
 
 class AssignmentForm(forms.ModelForm):
     class Meta:
@@ -20,3 +21,13 @@ class AssignmentForm(forms.ModelForm):
             except json.JSONDecodeError:
                 raise forms.ValidationError("Rubric must be valid JSON (e.g., {\"grammar\": 10, \"content\": 20}).")
         return rubric
+    
+
+
+class SubmissionForm(forms.ModelForm):
+    class Meta:
+        model = Submission
+        fields = ['file', 'answer']  # These fields should match your model
+        widgets = {
+            'answer': forms.Textarea(attrs={'rows': 4, 'class': 'form-control'}),
+        }
