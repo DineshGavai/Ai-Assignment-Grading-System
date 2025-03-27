@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Interview</title>
+    <link rel="stylesheet" href="{% static 'css/mock_interview.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Mock Interview</h1>
+
+        <div id="input-section">
+            <label for="job_role">Job Role:</label>
+            <input type="text" id="job_role" placeholder="Enter job role">
+
+            <label for="company_name">Company Name:</label>
+            <input type="text" id="company_name" placeholder="Enter company name">
+
+            <button onclick="startInterview()">Start Interview</button>
+        </div>
+
+        <div id="interview-section" style="display: none;">
+            <h2 id="question">Loading question...</h2>
+            <textarea id="answer" placeholder="Type your answer..."></textarea>
+            <button onclick="submitAnswer()">Submit</button>
+            <button onclick="skipQuestion()">Skip</button>
+        </div>
+
+        <div id="evaluation-result" style="white-space: pre-line;"></div>
+        <h2>Interview Evaluation</h2>
+        <div id="evaluation-result"></div>
+    </div>
+    </div>
+
+    <script src="{% static 'js/mock_interview.js' %}"></script>
+</body>
+
+</html>

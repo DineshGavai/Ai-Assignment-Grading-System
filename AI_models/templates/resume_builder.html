@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Maker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .resume-output {
+            background: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>AI Resume Maker</h1>
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="education" placeholder="Education">
+        <textarea id="experience" placeholder="Experience"></textarea>
+        <input type="text" id="skills" placeholder="Skills (comma separated)">
+        <textarea id="jobDescription" placeholder="Paste Job Description"></textarea>
+        <button onclick="generateResume()">Generate Resume</button>
+        <div id="resumeOutput" class="resume-output"></div>
+    </div>
+
+    <script>
+        async function generateResume() {
+            const userData = {
+                name: document.getElementById("name").value,
+                education: document.getElementById("education").value,
+                experience: document.getElementById("experience").value,
+                skills: document.getElementById("skills").value
+            };
+            const jobDescription = document.getElementById("jobDescription").value;
+
+            const response = await fetch("http://127.0.0.1:8000/models/generate_resume/", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ user_data: userData, job_description: jobDescription })
+            });
+
+            const result = await response.json();
+            document.getElementById("resumeOutput").innerHTML = `<h2>Generated Resume</h2><p>${result.resume_content}</p>`;
+        }
+    </script>
+</body>
+
+</html>

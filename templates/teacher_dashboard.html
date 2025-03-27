@@ -1,1 +1,217 @@
-{% extends 'create_assignment.html' %}
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard | TeachBot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/teacher_dashboard.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>TeachBot</span>
+                </div>
+            </div>
+            <div class="sidebar-content">
+                <div class="nav-section">
+                    <div class="nav-section-title">Dashboard</div>
+                    <ul class="nav-items">
+                        <li class="nav-item active" onclick="showSection('overview')">
+                            <i class="fas fa-home"></i>
+                            <span>Overview</span>
+                        </li>
+                        <li class="nav-item" onclick="showSection('assignments')">
+                            <i class="fas fa-tasks"></i>
+                            <span>Assignments</span>
+                        </li>
+                        <li class="nav-item" onclick="showSection('analytics')"> <!-- Fixed Typo -->
+                            <i class="fas fa-chart-line"></i>
+                            <span>Analytics</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-title">Classroom</div>
+                    <ul class="nav-items">
+                        <li class="nav-item" onclick="showSection('students')">
+                            <i class="fas fa-book"></i>
+                            <span>Students</span>
+                        </li>
+                        <li class="nav-item" onclick="showSection('resources')">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Resources</span>
+                        </li>
+                        <li class="nav-item" onclick="showSection('schedule')">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Schedule</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-title">Communication</div>
+                    <ul class="nav-items">
+                        <li class="nav-item" onclick="showSection('messages')">
+                            <i class="fas fa-envelope"></i>
+                            <span>Messages</span>
+                        </li>
+                        <li class="nav-item" onclick="showSection('settings')">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">JS</div>
+                    <div class="user-details">
+                        <div class="user-name">Prof.John Smith</div>
+                        <div class="user-role">Teacher</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="dashboard-header">
+                <h1 class="page-title">Teacher Dashboard</h1>
+            </div>
+
+            <!-- Sections -->
+            <div id="overview" class="section">
+                <h2>Overview</h2>
+                <!-- Stats Overview -->
+                <div class="dashboard-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div class="stat-card-title">Active Assignments</div>
+                            <div class="stat-card-icon">
+                                <i class="fas fa-clipboard-list"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card-value">12</div>
+                        <div class="stat-card-description">5 pending reviews</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div class="stat-card-title">Students</div>
+                            <div class="stat-card-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card-value">35</div>
+                        <div class="stat-card-description">Across 2 classes</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div class="stat-card-title">Class Average</div>
+                            <div class="stat-card-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card-value">78%</div>
+                        <div class="stat-card-description">For all assignments</div>
+                    </div>
+                </div>
+
+                <!-- Students List -->
+                <section class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">Students Overview</h2>
+                        <div class="view-all">See All Students</div>
+                    </div>
+                    <div class="students-list">
+                        <div class="student-card">
+                            <div class="student-avatar">JS</div>
+                            <div class="student-details">
+                                <div class="student-name">John Smith</div>
+                                <div class="student-email">john.smith@example.com</div>
+                            </div>
+                            <div class="student-progress">
+                                <div class="progress-label">Overall: 92%</div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: 92%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="student-card">
+                            <div class="student-avatar">AR</div>
+                            <div class="student-details">
+                                <div class="student-name">Alice Roberts</div>
+                                <div class="student-email">alice.roberts@example.com</div>
+                            </div>
+                            <div class="student-progress">
+                                <div class="progress-label">Overall: 85%</div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="student-card">
+                            <div class="student-avatar">MK</div>
+                            <div class="student-details">
+                                <div class="student-name">Michael King</div>
+                                <div class="student-email">michael.king@example.com</div>
+                            </div>
+                            <div class="student-progress">
+                                <div class="progress-label">Overall: 78%</div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: 78%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+
+            <div id="assignments" class="section" style="display: none;">
+                <h2>Assignments</h2>
+                <p>Manage your assignments here.</p>
+            </div>
+
+            <div id="analytics" class="section" style="display: none;"> <!-- Fixed Typo -->
+                <h2>Analytics</h2>
+            </div>
+
+            <div id="students" class="section" style="display: none;">
+                <h2>Students</h2>
+            </div>
+
+            <div id="resources" class="section" style="display: none;">
+                <h2>Resources</h2>
+            </div>
+
+            <div id="schedule" class="section" style="display: none;">
+                <h2>Schedule</h2>
+                <p>Interact with the AI chatbot.</p>
+            </div>
+
+            <div id="messages" class="section" style="display: none;">
+                <h2>Messages</h2>
+            </div>
+
+            <div id="settings" class="section" style="display: none;">
+                <h2>Settings</h2>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="{% static 'js/teacher_dashboard.js' %}"></script>
+</body>
+
+</html>

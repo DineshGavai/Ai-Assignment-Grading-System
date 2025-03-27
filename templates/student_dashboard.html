@@ -1,15 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
+
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Page</title>
+    <title>Student Dashboard | TeachBot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/student_dashboard.css'%}">
 </head>
 
 <body>
-    <h2>Login Successfull</h2>
-    <a href="{% url 'logout' %}">Logout</a>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>TeachBot</span>
+                </div>
+            </div>
+            <div class="sidebar-content">
+                <div class="nav-section">
+                    <div class="nav-section-title">Dashboard</div>
+                    <ul class="nav-items">
+                        <li class="nav-item active" onclick="showSection('overview')">
+                            <i class="fas fa-home"></i>
+                            <span>Overview</span>
+                        </li>
+                        <li class="nav-item" onclick="showSection('assignment-grading')">
+                            <i class="fas fa-tasks"></i>
+                            <span>Assignment Grading System</span>
+                        </li>
+                        <li class="nav-item" onclick="showSection('progress')">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Progress</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-title">Career Navigator</div>
+                    <ul class="nav-items">
+                        <li class="nav-item" onclick="showSection('ai-resume')">
+                            <i class="fas fa-book"></i>
+                            <span>AI-Resume Generator</span>
+                        </li>
+                        <li class="nav-item" onclick="showSection('job-prediction')">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Job Prediction Model</span>
+                        </li>
+                        <li class="nav-item" onclick="showSection('chat-bot')">
+                            <i class="fas fa-comment-alt"></i>
+                            <span>Archimedes-bot</span>
+                        </li>
+                        <li class="nav-item" onclick="showSection('interview')">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Mock Interview Model </span>
+                        </li>
+                        <li class="nav-item" onclick="showSection('quiz')">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Quiz Section</span>
+                        </li>
+                        <li class="nav-item" onclick="showSection('schedule')">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Schedule</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-title">Support</div>
+                    <ul class="nav-items">
+                        <li class="nav-item" onclick="showSection('settings')">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Settings</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">JS</div>
+                    <div class="user-details">
+                        <div class="user-name">John Smith</div>
+                        <div class="user-role">Student</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="dashboard-header">
+                <div class="header-left">
+                    <span class="mobile-menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </span>
+                    <h1 class="page-title">Student Dashboard</h1>
+                </div>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search assignments, resources...">
+                </div>
+            </div>
+
+            <div id="overview" class="section">
+                <h2>Overview</h2>
+
+                <!-- Stats Overview -->
+                <div class="dashboard-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div class="stat-card-title">Assignments</div>
+                            <div class="stat-card-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card-value">8</div>
+                        <div class="stat-card-description">3 pending, 5 completed</div>
+                        <div class="progress-indicator positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>25% from last month</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div class="stat-card-title">Average Score</div>
+                            <div class="stat-card-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card-value">85%</div>
+                        <div class="stat-card-description">Based on recent submissions</div>
+                        <div class="progress-indicator positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>5% improvement</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div class="stat-card-title">Learning Hours</div>
+                            <div class="stat-card-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card-value">24h</div>
+                        <div class="stat-card-description">This week</div>
+                        <div class="progress-indicator positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>2h more than last week</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pending Assignments Section -->
+                <section class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">Pending Assignments</h2>
+                        <div class="view-all">View All</div>
+                    </div>
+                    <div class="assignments-list">
+                        <div class="assignment-card">
+                            <div class="assignment-card-header">
+                                <div class="assignment-title">Essay: The Impact of AI in Education</div>
+                                <div class="assignment-subject">English</div>
+                            </div>
+                            <div class="assignment-meta">
+                                <div class="assignment-due">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Due in 2 days</span>
+                                </div>
+                                <div class="assignment-points">20 points</div>
+                            </div>
+                            <button class="submit-btn">Submit Assignment</button>
+                        </div>
+
+                        <div class="assignment-card">
+                            <div class="assignment-card-header">
+                                <div class="assignment-title">Problem Set: Linear Equations</div>
+                                <div class="assignment-subject">Math</div>
+                            </div>
+                            <div class="assignment-meta">
+                                <div class="assignment-due">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Due tomorrow</span>
+                                </div>
+                                <div class="assignment-points">15 points</div>
+                            </div>
+                            <button class="submit-btn">Submit Assignment</button>
+                        </div>
+
+                        <div class="assignment-card">
+                            <div class="assignment-card-header">
+                                <div class="assignment-title">Lab Report: Chemical Reactions</div>
+                                <div class="assignment-subject">Science</div>
+                            </div>
+                            <div class="assignment-meta">
+                                <div class="assignment-due">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Due in 5 days</span>
+                                </div>
+                                <div class="assignment-points">25 points</div>
+                            </div>
+                            <button class="submit-btn">Submit Assignment</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Recommended Learning Paths -->
+                <section class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">Recommended Learning Paths</h2>
+                        <div class="view-all">See All</div>
+                    </div>
+                    <div class="learning-paths">
+                        <div class="path-card">
+                            <div class="path-card-image">
+                                <i class="fas fa-code fa-3x"></i>
+                            </div>
+                            <div class="path-card-content">
+                                <h3 class="path-card-title">Introduction to Programming</h3>
+                                <p class="path-card-description">Learn the basics of programming with Python</p>
+                                <div class="path-card-progress">
+                                    <div class="progress-bar-bg">
+                                        <div class="progress-bar-fill" style="width: 45%;"></div>
+                                    </div>
+                                    <div class="progress-text">45% completed</div>
+                                </div>
+                                <button class="explore-btn">Continue Learning</button>
+                            </div>
+                        </div>
+
+                        <div class="path-card">
+                            <div class="path-card-image">
+                                <i class="fas fa-calculator fa-3x"></i>
+                            </div>
+                            <div class="path-card-content">
+                                <h3 class="path-card-title">Advanced Mathematics</h3>
+                                <p class="path-card-description">Master calculus and linear algebra</p>
+                                <div class="path-card-progress">
+                                    <div class="progress-bar-bg">
+                                        <div class="progress-bar-fill" style="width: 20%;"></div>
+                                    </div>
+                                    <div class="progress-text">20% completed</div>
+                                </div>
+                                <button class="explore-btn">Continue Learning</button>
+                            </div>
+                        </div>
+
+                        <div class="path-card">
+                            <div class="path-card-image">
+                                <i class="fas fa-flask fa-3x"></i>
+                            </div>
+                            <div class="path-card-content">
+                                <h3 class="path-card-title">Chemistry Fundamentals</h3>
+                                <p class="path-card-description">Explore the world of atoms and molecules</p>
+                                <div class="path-card-progress">
+                                    <div class="progress-bar-bg">
+                                        <div class="progress-bar-fill" style="width: 0%;"></div>
+                                    </div>
+                                    <div class="progress-text">Not started</div>
+                                </div>
+                                <button class="explore-btn">Start Learning</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- AI Chatbot Button -->
+                <div class="chatbot-button">
+                    <i class="fas fa-robot"></i>
+                </div>
+            </div>
+
+
+            <div id="assignment-grading" class="section" style="display: none;">
+                <h2>Assignment Grading System</h2>
+                <p>Manage your assignment grading here.</p>
+            </div>
+
+            <div id="progress" class="section" style="display: none;">
+                <h2>Progress</h2>
+                <!-- Progress Tracking Section -->
+                <section class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">Your Progress</h2>
+                        <div class="view-all">More Details</div>
+                    </div>
+                    <div class="progress-chart" id="progressChart"></div>
+                </section>
+
+            </div>
+
+            <div id="ai-resume" class="section" style="display: none;">
+                <h2>AI-Resume Generator</h2>
+                <p>Create your resume with AI assistance.</p>
+            </div>
+
+            <div id="job-prediction" class="section" style="display: none;">
+                <h2>Job Prediction Model</h2>
+                <p>See job opportunities predictions for engineering students.</p>
+            </div>
+
+            <div id="chat-bot" class="section" style="display: none;">
+                <h2>Archimedes-Bot</h2>
+                <p>Interact with the AI chatbot.</p>
+            </div>
+            <div id="interview" class="section" style="display: none;">
+                <h2>Mock Interview Model</h2>
+                <p>Interact with the AI chatbot.</p>
+            </div>
+            <div id="quiz" class="section" style="display: none;">
+                <h2>Quiz Section</h2>
+                <p>Interact with the AI chatbot.</p>
+            </div>
+
+            <div id="schedule" class="section" style="display: none;">
+                <h2>Schedule</h2>
+                <p>View your schedule here.</p>
+            </div>
+            <div id="settings" class="section" style="display: none;">
+                <h2>Settings</h2>
+                <p>View your schedule here.</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <script src="{% static 'js/student_dashboard.js' %}"></script>
 </body>
 
 </html>
