@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-8sireu61hhs0(=q80u1m64=%d-jb!2r07ctxt)mugv^z_ehf*0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["teachbot.onrender.com"]
 
 # Application definition
 
