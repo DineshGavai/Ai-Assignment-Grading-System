@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  
 ]
 
 ROOT_URLCONF = 'AI_Feedback.urls'
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'AI_Feedback.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],  # Updated to use Path object
+        'DIRS': ['templates'],  
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
