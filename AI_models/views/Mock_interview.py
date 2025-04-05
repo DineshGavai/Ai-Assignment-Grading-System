@@ -33,7 +33,6 @@ def evaluate_answers(responses):
     response = model.generate_content(prompt)
 
     evaluation_text = response.candidates[0].content.parts[0].text if response.candidates else "No evaluation generated."
-
     return evaluation_text
 
 

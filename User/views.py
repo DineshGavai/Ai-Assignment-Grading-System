@@ -67,7 +67,6 @@ def register(request):
             messages.error(request, f"Unexpected error: {str(e)}. Please try again.")
             return redirect("register")
     branches = list(Branch.objects.values_list('name', flat=True)) 
-    print(branches)
     context={
         'branches':branches
     }
@@ -82,7 +81,6 @@ def login(request):
         user = User.objects.filter(email=email).first()
         
         user = authenticate(request, email=email, password=password)
-        print(user)
         if user:
             if user.role == role:
                 auth_login(request, user)

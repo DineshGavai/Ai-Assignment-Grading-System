@@ -11,7 +11,8 @@ async function startInterview() {
         return;
     }
 
-    const response = await fetch("http://127.0.0.1:8000/Mock_interview/generate_questions/", {
+    const response = await fetch("generate_questions/", {
+        // const response = await fetch("{% url 'get_questions'%}", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ job_role: jobRole, company_name: companyName })
@@ -19,7 +20,7 @@ async function startInterview() {
 
     const data = await response.json();
     questions = data.questions;
-
+    console.log
     if (questions.length === 0 || questions[0] === "No questions generated. Please try again.") {
         alert("No questions generated. Please try again.");
         return;
@@ -57,7 +58,7 @@ function skipQuestion() {
 async function finishInterview() {
     document.getElementById("interview-section").style.display = "none";
 
-    const response = await fetch("http://127.0.0.1:8000/Mock_interview/evaluate", {
+    const response = await fetch("evaluate/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ responses })

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Test Generator</title>
+    <link rel="stylesheet" href="{% static 'css/test_generator.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>AI Test Generator</h1>
+
+        <!-- User Input Form -->
+        <div id="userInput">
+            <label>Subject:</label>
+            <input type="text" id="subject" required>
+            <label>Topic:</label>
+            <input type="text" id="topic" required>
+            <label>Year:</label>
+            <input type="number" id="year" required>
+            <label>Semester:</label>
+            <input type="number" id="semester" required>
+            <button onclick="startTest()">Start Test</button>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loading" class="hidden">Generating Questions...</div>
+
+        <!-- Test Section -->
+        <div id="testSection" class="hidden">
+            <h2 id="questionText"></h2>
+            <input type="text" id="answerInput">
+            <button onclick="submitAnswer()">Next</button>
+            <button onclick="skipQuestion()">Skip</button>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsSection" class="hidden">
+            <h2>Test Evaluation</h2>
+            <table id="resultsTable"></table>
+        </div>
+
+    </div>
+
+    <script src="{% static 'js/test_generator.js' %}"></script>
+</body>
+
+</html>

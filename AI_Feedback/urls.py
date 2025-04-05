@@ -20,8 +20,7 @@ from .views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("",index,name="index"),
-    path("user/",include("User.urls")),
+    path("",include("User.urls")),
     path("models/",include("AI_models.urls"))
 
 ]

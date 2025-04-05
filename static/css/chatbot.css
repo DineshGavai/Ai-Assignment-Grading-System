@@ -1,0 +1,34 @@
+body {
+  background-color: #f4f4f9;
+}
+
+.chat-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+.chat-box {
+  height: 400px;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.message {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 8px;
+  max-width: 80%;
+}
+
+.user {
+  background-color: #3b82f6;
+  color: white;
+  align-self: flex-end;
+}
+
+.bot {
+  background-color: #e5e7eb;
+  color: black;
+  align-self: flex-start;
+}

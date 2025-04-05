@@ -52,11 +52,9 @@ def grade_assignment(text, year, semester, subject):
 
 @csrf_exempt
 def upload_file(request):
-    print("hello")
     if request.method == 'POST' and request.FILES.get('file'):
         file = request.FILES['file']
         file_name = default_storage.save(os.path.join('uploads', file.name), ContentFile(file.read()))
-        print(file_name)
         file_path = os.path.join(settings.MEDIA_ROOT, file_name)
         
         year = request.POST.get("year")
