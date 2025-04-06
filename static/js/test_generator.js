@@ -18,7 +18,7 @@ function startTest() {
     document.getElementById("userInput").classList.add("hidden");
     document.getElementById("loading").classList.remove("hidden");
 
-    fetch("/models/start_test/", {
+    fetch("models/start_test/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ subject, topic, year, semester })
@@ -70,7 +70,7 @@ function evaluateTest() {
     document.getElementById("testSection").classList.add("hidden");
     document.getElementById("loading").classList.remove("hidden");
 
-    fetch("/models/evaluate/", {
+    fetch("models/evaluate/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ responses: userResponses, correct_answers: answers })

@@ -12,7 +12,6 @@ async function startInterview() {
     }
 
     const response = await fetch("generate_questions/", {
-        // const response = await fetch("{% url 'get_questions'%}", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ job_role: jobRole, company_name: companyName })

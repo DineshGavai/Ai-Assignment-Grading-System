@@ -19,7 +19,7 @@ urlpatterns = [
 
    # Resume Builder
    path("resume_builder/",resume_builder.resume_builder,name="resume_builder"),
-   path("generate_resume/", resume_builder.generate_resume, name="generate_resume"),
+   path("resume_builder/generate_resume/", resume_builder.generate_resume, name="generate_resume"),
 
    # Test Generator
     path('test-generator/', test_generator.test_generator, name='test_generator'),

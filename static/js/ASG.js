@@ -4,7 +4,7 @@ document.getElementById("uploadForm").addEventListener("submit", function (event
 
     let formData = new FormData(this);
 
-    fetch("http://127.0.0.1:8000/models/upload/", {
+    fetch("models/upload/", {
         method: "POST",
         body: formData
     })
@@ -20,4 +20,3 @@ document.getElementById("uploadForm").addEventListener("submit", function (event
         .catch(error => console.error("Error:", error));
 });
 
-console.log("Fuck you")

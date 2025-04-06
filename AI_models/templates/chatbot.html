@@ -71,7 +71,7 @@
             inputField.value = "";
             chatBox.scrollTop = chatBox.scrollHeight;
 
-            let response = await fetch("/models/chat/", {
+            let response = await fetch("models/chat/", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ question: userMessage })
