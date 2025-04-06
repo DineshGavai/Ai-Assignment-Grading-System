@@ -3,13 +3,14 @@ let answers = [];
 let userResponses = [];
 let currentQuestionIndex = 0;
 
+
 // Start Test
 function startTest() {
     const subject = document.getElementById("subject").value;
     const topic = document.getElementById("topic").value;
     const year = document.getElementById("year").value;
     const semester = document.getElementById("semester").value;
-
+    
     if (!subject || !topic || !year || !semester) {
         alert("Please fill all fields.");
         return;
@@ -18,7 +19,7 @@ function startTest() {
     document.getElementById("userInput").classList.add("hidden");
     document.getElementById("loading").classList.remove("hidden");
 
-    fetch("models/start_test/", {
+    fetch("start_test/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ subject, topic, year, semester })
@@ -70,7 +71,7 @@ function evaluateTest() {
     document.getElementById("testSection").classList.add("hidden");
     document.getElementById("loading").classList.remove("hidden");
 
-    fetch("models/evaluate/", {
+    fetch("evaluate/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ responses: userResponses, correct_answers: answers })

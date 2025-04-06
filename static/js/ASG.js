@@ -4,7 +4,7 @@ document.getElementById("uploadForm").addEventListener("submit", function (event
 
     let formData = new FormData(this);
 
-    fetch("models/upload/", {
+    fetch("upload/", {
         method: "POST",
         body: formData
     })
