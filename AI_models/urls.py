@@ -10,7 +10,7 @@ from .views import chatbot
 urlpatterns = [
    #  Assignment Grading System
    path('AGS/',AGS_views.AGS,name="AGS_Model"),
-   path('upload/', AGS_views.upload_file, name='upload_file'),
+   path('AGS/upload/', AGS_views.upload_file, name='upload_file'),
 
    # Mock Interview models 
    path('Mock_interview/',Mock_interview.mock_interview,name="mock_interview"),
@@ -23,8 +23,8 @@ urlpatterns = [
 
    # Test Generator
     path('test-generator/', test_generator.test_generator, name='test_generator'),
-    path('start_test/',test_generator.start_test, name='start_test'),
-    path('evaluate/', test_generator.evaluate, name='evaluate'),
+    path('test-generator/start_test/',test_generator.start_test, name='start_test'),
+    path('test-generator/evaluate/', test_generator.evaluate, name='evaluate'),
    
    # Chatbot
    path('chatbot/', chatbot.chatbot, name='chatbot'),
