@@ -345,13 +345,15 @@
                 <div class="flex justify-end mt-2">
                     <a href="{% url 'mock_interview' %}" class="bg-blue-500  text-white px-4 py-2 rounded-md
                         hover:bg-blue-600 transition">Mock Interview</a>
-
                 </div>
 
             </div>
             <div id="quiz" class="section" style="display: none;">
                 <h2>Quiz Section</h2>
-                <p>Interact with the AI chatbot.</p>
+                <div class="flex justify-end mt-2">
+                    <a href="{% url 'test_generator' %}" class="bg-blue-500  text-white px-4 py-2 rounded-md
+                        hover:bg-blue-600 transition">Generate Quiz</a>
+                </div>
             </div>
 
             <div id="schedule" class="section" style="display: none;">
