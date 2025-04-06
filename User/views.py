@@ -79,14 +79,16 @@ def login(request):
         password = request.POST.get("password")
         role = request.POST.get("role")
         user = User.objects.filter(email=email).first()
-        
+
         user = authenticate(request, email=email, password=password)
         if user:
             if user.role == role:
                 auth_login(request, user)
                 if role == "student":
+                    context={'user':user}
                     return redirect("student_dashboard")
                 elif role == "teacher":
+                    context={'user':user}
                     return redirect("teacher_dashboard")
             else:
                 messages.error(request, "Role does not match.")
@@ -111,11 +113,14 @@ def student_dashboard(request):
     
     # Get student's submissions
     submissions = Submission.objects.filter(student=request.user)
+    user = request.user
+
     
     context = {
         'classrooms': classrooms,
         'assignments': assignments,
-        'submissions': submissions
+        'submissions': submissions,
+        'user_details': user
     }
     
     return render(request, "student_dashboard.html", context)
@@ -134,10 +139,12 @@ def teacher_dashboard(request):
         assignment__classroom__in=classrooms
     ).order_by('-submitted_at')[:10]
     
+    user = request.user
     context = {
         'classrooms': classrooms,
         'assignments': assignments,
-        'recent_submissions': recent_submissions
+        'recent_submissions': recent_submissions,
+        'user_details': user
     }
     
     return render(request, "teacher_dashboard.html", context)

@@ -73,8 +73,8 @@
                 <div class="user-info">
                     <div class="user-avatar">JS</div>
                     <div class="user-details">
-                        <div class="user-name">Prof.John Smith</div>
-                        <div class="user-role">Teacher</div>
+                        <div class="user-name">Prof.{{ user_details.first_name }} {{ user_details.last_name }}</div>
+                        <div class="user-role">{{user_details.role}}</div>
                     </div>
                 </div>
             </div>
