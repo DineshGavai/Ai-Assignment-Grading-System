@@ -15,14 +15,16 @@
         <form id="uploadForm" enctype="multipart/form-data">
             <label for="year">Year:</label>
             <select id="year" name="year">
+                <option selected disabled>Select Year</option>
                 <option value="1">1st Year</option>
                 <option value="2">2nd Year</option>
                 <option value="3">3rd Year</option>
                 <option value="4">4th Year</option>
             </select>
-
+            
             <label for="semester">Semester:</label>
             <select id="semester" name="semester">
+                <option selected disabled>Select Semester</option>
                 <option value="1">Semester 1</option>
                 <option value="2">Semester 2</option>
                 <option value="3">Semester 3</option>
@@ -47,29 +49,7 @@
             <div id="resultContainer"></div>
         </div>
     </div>
-    <script>
-
-        document.getElementById("uploadForm").addEventListener("submit", function (event) {
-            event.preventDefault();
-
-            let formData = new FormData(this);
-
-            fetch("models/upload/", {
-                method: "POST",
-                body: formData
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.error) {
-                        alert(data.error);
-                    } else {
-                        document.getElementById("output").classList.remove("hidden");
-                        document.getElementById("resultContainer").innerText = data.result;
-                    }
-                })
-                .catch(error => console.error("Error:", error));
-        });
-    </script>
+    
     <script src="{% static 'js/ASG.js' %}"></script>
 </body>
 
